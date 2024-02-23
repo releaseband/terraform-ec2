@@ -28,6 +28,10 @@ resource "aws_security_group_rule" "sg_rule" {
   security_group_id = aws_security_group.sg.id
 }
 
+resource "aws_eip" "eip" {
+  instance = aws_instance.instance.id
+}
+
 resource "aws_subnet" "subnet" {
   for_each                = var.subnet_metadata
   availability_zone       = each.value
