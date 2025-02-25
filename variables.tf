@@ -49,21 +49,6 @@ variable "network_rules" {
   description = "List of network rules"
 }
 
-variable "CPUCreditUsage_per_hour" {
-  type        = number
-  description = "CPU credit usage per hour"
-}
-
-variable "minimum_cpu_balance" {
-  type        = number
-  description = "Minimum CPU credit balance"
-}
-
-variable "sns_arn" {
-  type        = string
-  description = "ARN of the SNS topic"
-}
-
 variable "ec2_type" {
   type        = string
   description = "Type of the EC2 instance"

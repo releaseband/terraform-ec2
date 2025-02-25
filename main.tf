@@ -46,35 +46,3 @@ resource "aws_route_table_association" "association" {
   subnet_id      = aws_subnet.subnet[element(keys(var.subnet_metadata), count.index)].id
   route_table_id = var.rt_id
 }
-
-resource "aws_cloudwatch_metric_alarm" "instance_cpu_usage" {
-  alarm_name          = "${var.project_name}_${var.product_name}_${var.function}_cpu_usage"
-  comparison_operator = "GreaterThanThreshold"
-  evaluation_periods  = "1"
-  metric_name         = "CPUCreditUsage"
-  namespace           = "AWS/EC2"
-  period              = "3600"
-  statistic           = "Sum"
-  threshold           = var.CPUCreditUsage_per_hour
-  alarm_description   = ""
-  alarm_actions       = [var.sns_arn]
-  dimensions = {
-    InstanceId = aws_instance.instance.id
-  }
-}
-
-resource "aws_cloudwatch_metric_alarm" "instance_cpu_balance" {
-  alarm_name          = "${var.project_name}_${var.product_name}_${var.function}_cpu_balance"
-  comparison_operator = "LessThanOrEqualToThreshold"
-  evaluation_periods  = "1"
-  metric_name         = "CPUCreditBalance"
-  namespace           = "AWS/EC2"
-  period              = "300"
-  statistic           = "Average"
-  threshold           = var.minimum_cpu_balance
-  alarm_description   = ""
-  alarm_actions       = [var.sns_arn]
-  dimensions = {
-    InstanceId = aws_instance.instance.id
-  }
-}

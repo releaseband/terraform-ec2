@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.2.0](https://github.com/releaseband/terraform-ec2/compare/v0.1.0...v0.2.0) (2024-02-23)
+
+
+### Features
+
+* added resource aws_eip ([1ea5354](https://github.com/releaseband/terraform-ec2/commit/1ea5354248642a41835e472b55d043e486761a99))
+
 ## [0.1.0](https://github.com/releaseband/terraform-ec2/compare/v0.0.1...v0.1.0) (2024-02-23)
 
 
